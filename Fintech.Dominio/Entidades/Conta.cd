@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Fintech.Dominio.Entidades.Agencia" Collapsed="true">
+    <Position X="1.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAgAAAAgAAAAAAABAAA=</HashCode>
+      <FileName>Entidades\Agencia.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Banco" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Fintech.Dominio.Entidades.Banco" Collapsed="true">
+    <Position X="1.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEBAAA=</HashCode>
+      <FileName>Entidades\Banco.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fintech.Dominio.Entidades.Cliente">
+    <Position X="5" Y="4" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAgAAAAAAAAAIAAAEAAAAgAAGAAAA=</HashCode>
+      <FileName>Entidades\Cliente.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ContaCorrente" />
+      <Property Name="EnderecoResidencial" />
+      <Property Name="Sexo" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Fintech.Dominio.Entidades.ContaCorrente">
+    <Position X="1.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAACAAAAAAQAAAAQgAAIAAAABAAA=</HashCode>
+      <FileName>Entidades\ContaCorrente.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Agencia" />
+      <Property Name="Cliente" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Fintech.Dominio.Entidades.Endereco" Collapsed="true">
+    <Position X="5.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIEAAAAAACAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>Entidades\Endereco.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Fintech.Dominio.Entidades.Sexo" Collapsed="true">
+    <Position X="5.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAAAAAAIAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>Entidades\Sexo.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
