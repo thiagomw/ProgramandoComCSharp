@@ -1,0 +1,72 @@
+﻿<Window x:Class="Fintech.Correntista.Wpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Fintech.Correntista.Wpf"
+        mc:Ignorable="d"
+        Title="Fintech Correntista" MinHeight="600" MinWidth="800" WindowState="Maximized">
+    <Grid>
+        <TabControl>
+            <TabItem Header="Clientes">
+                <TabControl TabStripPlacement="Left">
+                    <TabItem Header="Pesquisa">
+
+                    </TabItem>
+                    <TabItem Header="Cadastro">
+                        <StackPanel>
+                            <DockPanel>
+                                <Label Content="CPF:" Width="120" HorizontalContentAlignment="Right" />
+                                <TextBox Name="cpfTextBox" Height="23" Width="580" HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                         TextWrapping="NoWrap" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label Content="Nome:" Width="120" HorizontalContentAlignment="Right" />
+                                <TextBox Name="nomeTextBox" Height="23" Width="580" HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                         TextWrapping="NoWrap" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label Content="Data de Nascimento:" Width="120" HorizontalContentAlignment="Right" />
+                                <TextBox Name="dataNascimentoTextBox" Height="23" Width="580" HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                         TextWrapping="NoWrap" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label Content="Sexo:" Width="120" HorizontalContentAlignment="Right" />
+                                <ComboBox Name="sexoComboBox" Height="23" Width="120" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label Content="Logradouro:" Width="120" HorizontalContentAlignment="Right" />
+                                <TextBox Name="logradouroTextBox" Height="23" Width="580" HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                         TextWrapping="NoWrap" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label Content="Número:" Width="120" HorizontalContentAlignment="Right" />
+                                <TextBox Name="numeroLogradouroTextBox" Height="23" Width="580" HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                         TextWrapping="NoWrap" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label Content="Cidade:" Width="120" HorizontalContentAlignment="Right" />
+                                <TextBox Name="cidadeTextBox" Height="23" Width="580" HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                         TextWrapping="NoWrap" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Label Content="CEP:" Width="120" HorizontalContentAlignment="Right" />
+                                <TextBox Name="cepTextBox" Height="23" Width="580" HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                         TextWrapping="NoWrap" />
+                            </DockPanel>
+                            <DockPanel>
+                                <Button Name="incluirClienteButton" Content="Incluir" Height="23" Width="150" HorizontalAlignment="Left" Margin="120 5 0 0" Click="incluirClienteButton_Click"/>
+                            </DockPanel>
+                        </StackPanel>
+                    </TabItem>
+                </TabControl>
+            </TabItem>
+            <TabItem Header="Contas">
+
+            </TabItem>
+            <TabItem Header="Movimentações">
+
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
