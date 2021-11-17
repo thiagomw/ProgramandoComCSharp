@@ -10,10 +10,10 @@
         <TabControl>
             <TabItem Header="Clientes">
                 <TabControl TabStripPlacement="Left">
-                    <TabItem Header="Pesquisa">
-
+                    <TabItem Header="Pesquisa" Name="pesquisaClienteTabItem">
+                        <DataGrid Name="clienteDataGrid" AutoGenerateColumns="True" CanUserAddRows="False"/>
                     </TabItem>
-                    <TabItem Header="Cadastro">
+                    <TabItem Header="Cadastro" HorizontalAlignment="Left" Width="59">
                         <StackPanel>
                             <DockPanel>
                                 <Label Content="CPF:" Width="120" HorizontalContentAlignment="Right" />
