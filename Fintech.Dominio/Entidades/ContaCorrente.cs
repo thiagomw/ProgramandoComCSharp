@@ -1,27 +1,14 @@
-﻿using System;
+﻿using System.Collections.Generic;
 
 namespace Fintech.Dominio.Entidades
 {
-    public class ContaCorrente
+    public class ContaCorrente : Conta
     {
-        public int Id { get; set; }
-        public Agencia Agencia { get; set; }
-        public int Numero { get; set; }
-        public string DigitoVerificador { get; set; }
-        public decimal Saldo { get; set; }
-        public Cliente Cliente { get; set; }
+        public bool EmissaoChequeHabilitada { get; set; }
 
-        public void EfetuarOperacao(decimal valor, Operacao operacao)
+        public override List<string> Validar()
         {
-            switch (operacao)
-            {
-                case Operacao.Deposito:
-                    Saldo += valor;
-                    break;
-                case Operacao.Saque:
-                    Saldo -= valor;
-                    break;
-            }
+            throw new System.NotImplementedException();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Fintech.Dominio.Entidades
 {
@@ -10,6 +11,6 @@ namespace Fintech.Dominio.Entidades
         public DateTime DataNascimento { get; set; }
         public Sexo Sexo { get; set; }
         public Endereco EnderecoResidencial { get; set; }
-        public ContaCorrente ContaCorrente { get; set; }
+        public List<Conta> Contas { get; set; }
     }
 }
