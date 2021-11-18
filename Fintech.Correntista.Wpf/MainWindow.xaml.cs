@@ -64,5 +64,10 @@ namespace Fintech.Correntista.Wpf
             cidadeTextBox.Clear();
             numeroLogradouroTextBox.Clear();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
