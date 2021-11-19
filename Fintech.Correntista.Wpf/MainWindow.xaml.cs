@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 using Fintech.Dominio.Entidades;
@@ -38,6 +39,9 @@ namespace Fintech.Correntista.Wpf
 
             bancoComboBox.Items.Add(banco1);
             bancoComboBox.Items.Add(new Banco { Nome = "Banco Dois", Numero = 942 });
+
+            operacaoComboBox.Items.Add(Operacao.Deposito);
+            operacaoComboBox.Items.Add(Operacao.Saque);
         }
 
         private void incluirClienteButton_Click(object sender, RoutedEventArgs e)
@@ -78,17 +82,31 @@ namespace Fintech.Correntista.Wpf
             cidadeTextBox.Clear();
             numeroLogradouroTextBox.Clear();
         }
+        private void LimparControlesConta()
+        {
+            clienteTextBox.Clear();
+            bancoComboBox.SelectedIndex = -1;
+            numeroAgenciaTextBox.Clear();
+            dvAgenciaTextBox.Clear();
+            numeroContaTextBox.Clear();
+            dvContaTextBox.Clear();
+            tipoContaComboBox.SelectedIndex = -1;
+            limiteTextBox.Clear();
+        }
         private void SelecionarClienteButtonClick(object sender, RoutedEventArgs e)
         {
-            var botaoClicado = (Button)sender;
-            /*var clienteSelecionado = botaoClicado.DataContext;
-            this.clienteSelecionado = (Cliente)clienteSelecionado;*/
+            SelecionarCliente(sender);
 
-            clienteSelecionado = (Cliente)botaoClicado.DataContext;
-
-            clienteTextBox.Text = $"{clienteSelecionado.Nome} - {clienteSelecionado.Cpf}";
+            clienteTextBox.Text = clienteSelecionado.ToString(); /*$"{clienteSelecionado.Nome} - {clienteSelecionado.Cpf}";*/
 
             contasTabItem.Focus();
+        }
+
+        private void SelecionarCliente(object sender)
+        {
+            var botaoClicado = (Button)sender;
+
+            clienteSelecionado = (Cliente)botaoClicado.DataContext;
         }
 
         private void tipoContaComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -142,16 +160,30 @@ namespace Fintech.Correntista.Wpf
             clienteDataGrid.Items.Refresh();
             clientesTabItem.Focus();
         }
-        private void LimparControlesConta()
+        private void SelecionarContaButtonClick(object sender, RoutedEventArgs e)
         {
-            clienteTextBox.Clear();
-            bancoComboBox.SelectedIndex = -1;
-            numeroAgenciaTextBox.Clear();
-            dvAgenciaTextBox.Clear();
-            numeroContaTextBox.Clear();
-            dvContaTextBox.Clear();
-            tipoContaComboBox.SelectedIndex = -1;
-            limiteTextBox.Clear();
+            SelecionarCliente(sender);
+
+            contaTextBox.Text = clienteSelecionado.ToString();
+
+            contaComboBox.ItemsSource = clienteSelecionado.Contas;
+            contaComboBox.Items.Refresh();
+
+            movimentacoesTabItem.Focus();
+        }
+
+        private void incluirOperacaoButton_Click(object sender, RoutedEventArgs e)
+        {
+            var conta = (Conta)contaComboBox.SelectedItem;
+            var operacao = (Operacao)operacaoComboBox.SelectedItem;
+            var valor = Convert.ToDecimal(valorTextBox.Text);
+
+            conta.EfetuarOperacao(valor, operacao);
+
+            movimentacaoDataGrid.ItemsSource = conta.Movimentos;
+            movimentacaoDataGrid.Items.Refresh();
+
+            saldoTextBox.Text = conta.Saldo.ToString("C", new CultureInfo("pt-BR"));
         }
     }
 }

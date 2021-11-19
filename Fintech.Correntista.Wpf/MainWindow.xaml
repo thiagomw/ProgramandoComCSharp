@@ -34,6 +34,13 @@
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
+                            <DataGridTemplateColumn>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Content="+ Movimentação" Click="SelecionarContaButtonClick"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
                         </DataGrid.Columns>
                     </DataGrid>
                 </TabItem>
@@ -120,8 +127,48 @@
                 </DockPanel>
             </StackPanel>
         </TabItem>
-        <TabItem Header="Movimentações">
-
+        <TabItem Header="Movimentações" Name="movimentacoesTabItem">
+            <StackPanel>
+                <DockPanel>
+                    <Label Content="Cliente:" Width="120" HorizontalContentAlignment="Right"/>
+                    <TextBox Name="contaTextBox" Width="580" HorizontalAlignment="Left" VerticalContentAlignment="Center" IsReadOnly="True" Height="23" TextWrapping="NoWrap" />
+                </DockPanel>
+                <DockPanel>
+                    <Label Content="Conta:" Width="120" HorizontalContentAlignment="Right"/>
+                    <ComboBox Name="contaComboBox" DisplayMemberPath="Numero"
+                              SelectedValuePath="Numero"
+                              HorizontalAlignment="Left"
+                              VerticalContentAlignment="Center" Height="23" Width="150"/>
+                </DockPanel>
+                <DockPanel>
+                    <Label Content="Operação:" Width="120" HorizontalContentAlignment="Right"/>
+                    <ComboBox Name="operacaoComboBox" HorizontalAlignment="Left" VerticalContentAlignment="Center" Height="23" Width="150" />
+                </DockPanel>
+                <DockPanel>
+                    <Label Content="Valor:" Width="120" HorizontalContentAlignment="Right"/>
+                    <TextBox Name="valorTextBox" HorizontalAlignment="Left" Width="150" VerticalContentAlignment="Center"
+                             Height="23" TextWrapping="NoWrap" />
+                </DockPanel>
+                <DockPanel>
+                    <Button Name="incluirOperacaoButton" Content="Incluir" Margin="120 2 0 0" Height="23"
+                            HorizontalAlignment="Left" Width="150" Click="incluirOperacaoButton_Click"/>
+                </DockPanel>
+                <DockPanel>
+                    <DataGrid Name="movimentacaoDataGrid" AutoGenerateColumns="False" IsReadOnly="True" 
+                              CanUserAddRows="false" Width="580" HorizontalAlignment="Left" Margin="120 2 0 0">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Data" Binding="{Binding Path=DataTransacao}"/>
+                            <DataGridTextColumn Header="Operação" Binding="{Binding Path=Operacao}"/>
+                            <DataGridTextColumn Header="Valor" Binding="{Binding Path=Valor, StringFormat=C}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </DockPanel>
+                <DockPanel>
+                    <Label Content="Saldo:" Width="120" HorizontalContentAlignment="Right"/>
+                    <TextBox Name="saldoTextBox" HorizontalAlignment="Left" Width="150" VerticalContentAlignment="Center"
+                             Height="23" TextWrapping="NoWrap" IsReadOnly="True"/>
+                </DockPanel>
+            </StackPanel>
         </TabItem>
     </TabControl>
 </Window>

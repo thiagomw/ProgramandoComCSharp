@@ -12,5 +12,10 @@ namespace Fintech.Dominio.Entidades
         public Sexo Sexo { get; set; }
         public Endereco EnderecoResidencial { get; set; }
         public List<Conta> Contas { get; set; } = new List<Conta>();
+
+        public override string ToString()
+        {
+            return $"{Nome} - {Cpf}";
+        }
     }
 }
