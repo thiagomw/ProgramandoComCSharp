@@ -7,15 +7,30 @@
         mc:Ignorable="d"
         Title="Fintech Correntista" MinHeight="600" MinWidth="800" WindowState="Maximized">
     <TabControl>
-        <TabItem Header="Clientes">
+        <TabItem Header="Clientes" Name="clientesTabItem">
             <TabControl TabStripPlacement="Left">
                 <TabItem Header="Pesquisa" Name="pesquisaClienteTabItem">
-                    <DataGrid Name="clienteDataGrid" AutoGenerateColumns="True" CanUserAddRows="False" IsReadOnly="True">
+                    <DataGrid Name="clienteDataGrid" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True">
                         <DataGrid.Columns>
+                            <DataGridTextColumn Header="Nome" Binding="{Binding Path=Nome}"/>
+                            <DataGridTextColumn Header="CPF" Binding="{Binding Path=Cpf}"/>
+                            <DataGridTextColumn Header="Data de Nascimento" Binding="{Binding Path=DataNascimento}"/>
+                            <DataGridTextColumn Header="Sexo" Binding="{Binding Path=Sexo}"/>
+                            <DataGridTextColumn Header="CEP" Binding="{Binding Path=EnderecoResidencial.Cep}"/>
+                            <DataGridTextColumn Header="Logradouro" Binding="{Binding Path=EnderecoResidencial.Logradouro}"/>
+                            <DataGridTextColumn Header="Número" Binding="{Binding Path=EnderecoResidencial.Numero}"/>
+                            <DataGridTextColumn Header="Cidade" Binding="{Binding Path=EnderecoResidencial.Cidade}"/>
+                            <DataGridTemplateColumn Header="Contas">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <ComboBox ItemsSource="{Binding Contas}" DisplayMemberPath="Numero"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
                             <DataGridTemplateColumn>
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Button Content="+ Conta" Click="Button_Click"/>
+                                        <Button Content="+ Conta" Click="SelecionarClienteButtonClick"/>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
@@ -94,14 +109,14 @@
                 </DockPanel>
                 <DockPanel>
                     <Label Content="Tipo da conta:" Width="120" HorizontalContentAlignment="Right"/>
-                    <ComboBox Name="tipoContaComboBox" HorizontalAlignment="Left" VerticalContentAlignment="Center" Height="23" Width="150" />
+                    <ComboBox Name="tipoContaComboBox" HorizontalAlignment="Left" VerticalContentAlignment="Center" Height="23" Width="150" SelectionChanged="tipoContaComboBox_SelectionChanged" />
                 </DockPanel>
                 <DockPanel Name="limiteDockPanel" Visibility="Collapsed">
                     <Label Content="Limite:" Width="120" HorizontalContentAlignment="Right"/>
                     <TextBox Name="limiteTextBox" Width="150" HorizontalAlignment="Left" VerticalContentAlignment="Center" Height="23" TextWrapping="NoWrap" />
                 </DockPanel>
                 <DockPanel>
-                    <Button Name="incluirContaButton" Content="Incluir" Margin="120 2 0 0" Height="23" HorizontalAlignment="Left" Width="150"/>
+                    <Button Name="incluirContaButton" Content="Incluir" Margin="120 2 0 0" Height="23" HorizontalAlignment="Left" Width="150" Click="incluirContaButton_Click"/>
                 </DockPanel>
             </StackPanel>
         </TabItem>
