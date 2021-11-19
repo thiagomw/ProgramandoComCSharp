@@ -11,6 +11,8 @@
 
         public override void EfetuarOperacao(decimal valor, Operacao operacao)
         {
+            var sucesso = true;
+
             switch (operacao)
             {
                 case Operacao.Deposito:
@@ -21,10 +23,17 @@
                     {
                         Saldo -= valor;
                     }
+                    else
+                    {
+                        sucesso = false;
+                    }
                     break;
+            }
+
+            if (sucesso)
+            {
+                Movimentos.Add(new Movimento(operacao, valor));
             }
         }
     }
-
-
 }
