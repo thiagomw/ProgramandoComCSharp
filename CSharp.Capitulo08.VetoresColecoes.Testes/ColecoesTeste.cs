@@ -56,6 +56,9 @@ namespace CSharp.Capitulo08.VetoresColecoes.Testes
             {
                 Console.WriteLine($"{feriado.Key:d}: {feriado.Value}");
             }
+
+            Console.WriteLine(feriados.ContainsKey(Convert.ToDateTime("11/20/21")));
+            Console.WriteLine(feriados.ContainsValue("Natal"));
         }
     }
 }
