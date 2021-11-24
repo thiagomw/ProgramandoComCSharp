@@ -138,7 +138,7 @@
                     <ComboBox Name="contaComboBox" DisplayMemberPath="Numero"
                               SelectedValuePath="Numero"
                               HorizontalAlignment="Left"
-                              VerticalContentAlignment="Center" Height="23" Width="150"/>
+                              VerticalContentAlignment="Center" Height="23" Width="150" SelectionChanged="contaComboBox_SelectionChanged"/>
                 </DockPanel>
                 <DockPanel>
                     <Label Content="Operação:" Width="120" HorizontalContentAlignment="Right"/>
