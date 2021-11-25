@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using Fintech.Dominio.Entidades;
@@ -177,29 +178,59 @@ namespace Fintech.Correntista.Wpf
 
         private void incluirOperacaoButton_Click(object sender, RoutedEventArgs e)
         {
-            var conta = (Conta)contaComboBox.SelectedItem;
-            var operacao = (Operacao)operacaoComboBox.SelectedItem;
-            var valor = Convert.ToDecimal(valorTextBox.Text);
+            try
+            {
+                var conta = (Conta)contaComboBox.SelectedItem;
+                var operacao = (Operacao)operacaoComboBox.SelectedItem;
+                var valor = Convert.ToDecimal(valorTextBox.Text);
 
-            var movimento = conta.EfetuarOperacao(valor, operacao);
+                var movimento = conta.EfetuarOperacao(valor, operacao);
 
-            if (movimento == null) return;
+                if (movimento == null) return;
 
-            repositorio.Inserir(movimento);
+                repositorio.Inserir(movimento);
 
-            movimentacaoDataGrid.ItemsSource = conta.Movimentos;
-            movimentacaoDataGrid.Items.Refresh();
+                movimentacaoDataGrid.ItemsSource = conta.Movimentos;
+                movimentacaoDataGrid.Items.Refresh();
 
-            saldoTextBox.Text = conta.Saldo.ToString("C", new CultureInfo("pt-BR"));
+                saldoTextBox.Text = conta.Saldo.ToString("C", new CultureInfo("pt-BR"));
+
+            }
+            catch (FileNotFoundException ex)
+            {
+                MessageBox.Show($"O arquivo {ex.FileName} não foi encontrado.");
+            }
+            catch (DirectoryNotFoundException)
+            {
+                MessageBox.Show($"O diretório {Properties.Settings.Default.CaminhoArquivoMovimento} nao foi encontrado.");
+            }
+            catch (SaldoInsuficienteExecption ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Opa! Algo deu errado e em breve teremos uma solução.");
+                //Logarerro(ex);
+                //log4net
+            }
+            finally
+            {
+                // Executado sempre. Mesmo que haja um return no código.
+            }
         }
 
         private void contaComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            mainSpinner.Visibility = Visibility.Visible;
+            
             if (contaComboBox.SelectedIndex == -1) return;
 
             var conta = (Conta)contaComboBox.SelectedItem;
 
             conta.Movimentos = repositorio.Selecionar(conta.Agencia.Numero, conta.Numero);
+
+            mainSpinner.Visibility = Visibility.Hidden;
 
             movimentacaoDataGrid.ItemsSource = conta.Movimentos;
             saldoTextBox.Text = conta.Saldo.ToString("C", new CultureInfo("pt-BR"));
