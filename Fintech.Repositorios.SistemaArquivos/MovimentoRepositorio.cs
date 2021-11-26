@@ -27,7 +27,7 @@ namespace Fintech.Repositorios.SistemaArquivos
         public void Inserir(Movimento movimento)
         {
             var registro = $"{movimento.Guid}|{movimento.Conta.Agencia.Numero}|{movimento.Conta.Numero}" +
-                $"|{movimento.DataTransacao}|{((int)movimento.Operacao)}|{movimento.Valor}";
+                $"|{movimento.Data}|{((int)movimento.Operacao)}|{movimento.Valor}";
 
             if (!Directory.Exists(DiretorioBase))
             {
@@ -65,7 +65,7 @@ namespace Fintech.Repositorios.SistemaArquivos
                 {
                     var movimento = new Movimento(operacao, valor);
                     movimento.Guid = guid;
-                    movimento.DataTransacao = data;
+                    movimento.Data = data;
 
                     movimentos.Add(movimento);
                 }
@@ -97,7 +97,7 @@ namespace Fintech.Repositorios.SistemaArquivos
                 {
                     var movimento = new Movimento(operacao, valor);
                     movimento.Guid = guid;
-                    movimento.DataTransacao = data;
+                    movimento.Data = data;
 
                     movimentos.Add(movimento);
                 }

@@ -1,14 +1,18 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Fintech.Repositorios.SqlServer;
 using System;
-using Fintech.Repositorios.SistemaArquivos;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Fintech.Dominio.Entidades;
 
-namespace Fintech.Repositorios.SistemaArquivos.Tests
+namespace Fintech.Repositorios.SqlServer.Tests
 {
     [TestClass()]
     public class MovimentoRepositorioTests
     {
-        private readonly MovimentoRepositorio repositorio = new MovimentoRepositorio(@"Dados\Movimento.txt");
+        private readonly MovimentoRepositorio repositorio = new(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Fintech;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
 
         [TestMethod()]
         public void InserirTest()
@@ -18,7 +22,7 @@ namespace Fintech.Repositorios.SistemaArquivos.Tests
 
             var conta = new ContaCorrente(agencia, 456, "1");
 
-            var movimento = new Movimento(Operacao.Deposito, 1200.50m);
+            var movimento = new Movimento(Operacao.Deposito, 10);
             movimento.Conta = conta;
 
             repositorio.Inserir(movimento);
@@ -26,7 +30,7 @@ namespace Fintech.Repositorios.SistemaArquivos.Tests
         [TestMethod()]
         public void SelecionarTest()
         {
-            var movimentos = repositorio.Selecionar(2, 456);
+            var movimentos = repositorio.SelecionarAsync(2, 456).Result;
 
             foreach (var movimento in movimentos)
             {
