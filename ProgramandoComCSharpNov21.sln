@@ -25,9 +25,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fintech.Repositorios.Sistem
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fintech.Repositorios.SistemaArquivosTests", "Fintech.Repositorios.SistemaArquivosTests\Fintech.Repositorios.SistemaArquivosTests.csproj", "{78B2B059-E579-410E-A946-B781250CAC85}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fintech.Repositorios.SqlServer", "Fintech.Repositorios.SqlServer\Fintech.Repositorios.SqlServer.csproj", "{817F9E75-C17C-4496-941D-901CD8C787F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fintech.Repositorios.SqlServer", "Fintech.Repositorios.SqlServer\Fintech.Repositorios.SqlServer.csproj", "{817F9E75-C17C-4496-941D-901CD8C787F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fintech.Repositorios.SqlServerTests", "Fintech.Repositorios.SqlServerTests\Fintech.Repositorios.SqlServerTests.csproj", "{43E8A1BF-A037-4756-A4B9-187D87CC3806}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fintech.Repositorios.SqlServerTests", "Fintech.Repositorios.SqlServerTests\Fintech.Repositorios.SqlServerTests.csproj", "{43E8A1BF-A037-4756-A4B9-187D87CC3806}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -93,6 +93,7 @@ Global
 		{AD685E8D-D375-4668-91EB-C96B3119E0E8} = {74508F35-E3A8-4842-91B8-D8502FA1B191}
 		{78B2B059-E579-410E-A946-B781250CAC85} = {74508F35-E3A8-4842-91B8-D8502FA1B191}
 		{817F9E75-C17C-4496-941D-901CD8C787F4} = {74508F35-E3A8-4842-91B8-D8502FA1B191}
+		{43E8A1BF-A037-4756-A4B9-187D87CC3806} = {74508F35-E3A8-4842-91B8-D8502FA1B191}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7234F325-2822-4508-84E8-D58755D000DA}
